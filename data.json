@@ -2,6 +2,11 @@
   {
     "file": "experiments/infinityPressure.js",
     "name": "Infinity Pressure",
-    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview."
+    "description": "The inspiration comes from the artwork Infinity Pressure by Joshua Davis Studios. The scratch idea is to draw circles to create an pipe that goes down and up in a pattern, with size changes using noise. When working with the color, I used both noise to generate a shading difference in the gray-scale, but used a math.random() value to generate different shades of blue. To get the interactive moving changes in the art, a random function is also used to either increase or decrease the opacity of each ellipse."
+  },
+  {
+    "file": "experiments/infinityPressureV2.js",
+    "name": "Infinity Pressure V2",
+    "description": "This is a second verision of the artwork Infinity Pressure, and is therefore inspired by the same bases as the original. However, in this verision there is some changes in the design and I decided to use color in a different way. In this verision the color appears depending on the position of your mouse, making the artwork more interative for the user. However, the color that appears is generated similar to the color as in the original verision."
   }
 ]
