@@ -17,6 +17,6 @@
   {
     "file": "experiments/haskellV2.js",
     "name": "Haskell Ben Kovach V2",
-    "description": "."
+    "description": "Using the same foundation and colors as the first verision. However, this artwork is based on circles instead of squares, and instead of different position of the corners the size is changing. The size changes also uses Noise which is new for V2. This one also has removed the noLoop() function making the random pattern being drawn continuesly and looks like there is drawn new patterns all the time."
    }
 ]

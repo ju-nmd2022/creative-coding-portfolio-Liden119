@@ -34,8 +34,6 @@ function randomBlueColor(){
 function draw() {
     background(50, 50, 50);
 
-
-
     //For loops to draw all the circles, and gives them colors
     for(let x = 100; x < 700; x += 100){
         const currentX = x;
@@ -121,10 +119,6 @@ function draw() {
         }
     }
 
-    //For some reason, the text didnt show up at the beginning when I
-    // used an IF statement of checking mouse position was outside the box
-    // and only started working once the mouse had entered and left the artwork
-    //But this "uneffective" way of using if worked immeditely. 
     if(mouseX > 0 && mouseX < 700 && mouseY > 0 && mouseY < 700){
     push();
     noFill();
@@ -147,3 +141,7 @@ function draw() {
     pop();
 }
 }
+
+//REFERENCES
+// Line 21-25, 57, 75, 96 & 114 is all using noise and is all created own logic combined with help from lecture in link below
+// https://play.ju.se/media/Noise+examples%2C+and+Vera+Moln%C3%A1r/0_3pcpvm3q

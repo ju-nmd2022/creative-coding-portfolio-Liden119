@@ -1,10 +1,11 @@
 function setup(){
     createCanvas(1000, 1000);
-    frameRate(10);
+    frameRate(2);
 }
 
 const originalSize = 40;
-let margin;
+const divider = 10;
+const halfOriginalSize = 20;
 
 //Colors
 let black = [15, 15, 15];
@@ -13,38 +14,14 @@ let lightRed = [235, 160, 140];
 let white = [255, 255, 255];
 
 
-function getRandomValue(variable){
-
-    variable = Math.random() * 7;
-    
+function getRandomValue(){
+    variable = Math.random() * 15;
     return variable;
 }
 
-function drawSquare(x, y){
-    
-    push();
-    beginShape();
-    vertex(
-    x + getRandomValue(margin),
-    y+ getRandomValue(margin)
-    );
-    
-    vertex(
-        x + originalSize - getRandomValue(margin),
-        y + getRandomValue(margin)
-    );
-
-    vertex(
-        x + originalSize - getRandomValue(margin),
-        y + originalSize + - getRandomValue(margin)
-    );
-
-    vertex(
-        x + getRandomValue(margin), y + originalSize + - getRandomValue(margin)
-    );
-    endShape(CLOSE);
-    pop();
-
+function drawEllipse(x, y){
+    const value = noise(x/divider, y/divider) * originalSize;
+    ellipse(originalSize/2 + x * originalSize, originalSize/2 + y * originalSize, value);
 }
 
 
@@ -88,19 +65,16 @@ function draw() {
 
             }
 
-            drawSquare(x* originalSize, y * originalSize);
-            pop();
+            drawEllipse(x, y);
+             pop();
         }
     }
     }
 
-    noLoop();
 }
 
-
-
-
-
-
+//REFERENCES
+// Line 23-24 is inspired and created by looking at Noise_02.JS example from Garrit Lecture
+// https://play.ju.se/media/Noise+examples%2C+and+Vera+Moln%C3%A1r/0_3pcpvm3q
 
 

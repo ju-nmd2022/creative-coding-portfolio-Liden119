@@ -145,3 +145,10 @@ function draw() {
     }
 
 }
+
+//REFERENCES
+// Line 32-37 is inspired and created by help from the page below
+// https://editor.p5js.org/jarivkin/sketches/KkuvWGhDv
+//
+// Line 17-20, 53, 65, 98, 100 is all using noise and is all created own logic combined with help from lecture in link below
+// https://play.ju.se/media/Noise+examples%2C+and+Vera+Moln%C3%A1r/0_3pcpvm3q
