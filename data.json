@@ -12,11 +12,11 @@
   {
     "file": "experiments/haskell.js",
     "name": "Haskell Ben Kovach",
-    "description": "."
+    "description": "A re-creation of artwork Haskell - Ben Kovach, which is following a clear grid created with for loops. It involves a randomness within a limit of the position of each squares corner. Apart from the shape, also the color is random selected from a selection of a few alternatives using Math.random(). There is also a chance of no square at all at every position, which also uses math.random()."
    } ,
   {
     "file": "experiments/haskellV2.js",
-    "name": "Haskell Ben Kovach",
+    "name": "Haskell Ben Kovach V2",
     "description": "."
    }
 ]
