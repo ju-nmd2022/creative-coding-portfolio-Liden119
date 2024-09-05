@@ -27,6 +27,7 @@ class Agent {
       this.velocity.limit(this.maxSpeed);
       this.position.add(this.velocity);
       this.acceleration.mult(0);
+      
     }
   
     checkBorders() {
@@ -86,10 +87,11 @@ class Agent {
   function generateAgents() {
     for (let i = 0; i < 200; i++) {
       let agent = new Agent(
-        Math.random() * innerWidth,
+        Math.random() * innerWidth, 
         Math.random() * innerHeight,
-        4,
-        0.1
+        1000,
+        10
+        //Change the force and speed
       );
       agents.push(agent);
     }
@@ -98,7 +100,7 @@ class Agent {
   const fieldSize = 50;
   const maxCols = Math.ceil(innerWidth / fieldSize);
   const maxRows = Math.ceil(innerHeight / fieldSize);
-  const divider = 4;
+  const divider = 100;
   let field;
   let agents = [];
   

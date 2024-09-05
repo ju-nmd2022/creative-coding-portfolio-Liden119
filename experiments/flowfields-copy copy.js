@@ -1,6 +1,6 @@
 class Agent {
     constructor(x, y, maxSpeed, maxForce) {
-      this.position = createVector(x, y);
+      this.position = createVector(400, 100);
       this.lastPosition = createVector(x, y);
       this.acceleration = createVector(0, 0);
       this.velocity = createVector(0, 0);

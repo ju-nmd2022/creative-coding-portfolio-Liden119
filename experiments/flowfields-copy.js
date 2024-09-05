@@ -27,6 +27,7 @@ class Agent {
       this.velocity.limit(this.maxSpeed);
       this.position.add(this.velocity);
       this.acceleration.mult(0);
+      
     }
   
     checkBorders() {
@@ -98,7 +99,7 @@ class Agent {
   const fieldSize = 50;
   const maxCols = Math.ceil(innerWidth / fieldSize);
   const maxRows = Math.ceil(innerHeight / fieldSize);
-  const divider = 4;
+  const divider = 10;
   let field;
   let agents = [];
   

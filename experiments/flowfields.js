@@ -1,6 +1,6 @@
 class Agent {
     constructor(x, y, maxSpeed, maxForce) {
-        this.position = createVector(x, y);
+        this.position = createVector(0, y);
         this.lastPosition = createVector(x, y);
         this.acceleration = createVector(0, 0);
         this.velocity = createVector(0, 0);
@@ -48,7 +48,7 @@ class Agent {
 
     draw() {
         push();
-        stroke(100, green, 100, 40);
+        stroke(50, green, 50, 40);
         strokeWeight(1);
         line(
             this.lastPosition.x,
@@ -82,6 +82,7 @@ function generateField() {
             let position = createVector(posX, posY);
             let direction = p5.Vector.sub(center, position);
             field[x].push(direction);
+
 
         }
     }
