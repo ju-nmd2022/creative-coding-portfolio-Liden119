@@ -6,6 +6,9 @@ class Agent {
         this.velocity = createVector(0, 0);
         this.maxSpeed = maxSpeed;
         this.maxForce = maxForce;
+
+        this.colorOffset = random(1000);
+        this.colorValue = random(255);
     }
 
     follow(desiredDirection) {
@@ -47,8 +50,12 @@ class Agent {
     }
 
     draw() {
+        let r = noise(this.colorOffset * 0.01) * 255;
+        let g = noise(this.colorOffset + 1000 * 0.01) * 255;
+        let b = noise(this.colorOffset + 2000 * 0.01) * 255;
+
         push();
-        stroke(50, green, 50, 40);
+        stroke(r, g, b, 40);
         strokeWeight(1);
         line(
             this.lastPosition.x,
@@ -57,15 +64,12 @@ class Agent {
             this.position.y
         );
         pop();
-        green += 0.1;
     }
 }
 
-let green = 0;
-
 function setup() {
     createCanvas(innerWidth, innerHeight);
-    background(255, 255, 255);
+    background(235, 235, 235);
     field = generateField();
     generateAgents();
 }
@@ -82,8 +86,6 @@ function generateField() {
             let position = createVector(posX, posY);
             let direction = p5.Vector.sub(center, position);
             field[x].push(direction);
-
-
         }
     }
     return field;
@@ -104,7 +106,6 @@ function generateAgents() {
 const fieldSize = 50;
 const maxCols = Math.ceil(innerWidth / fieldSize);
 const maxRows = Math.ceil(innerHeight / fieldSize);
-const divider = 4;
 let field;
 let agents = [];
 
@@ -119,3 +120,14 @@ function draw() {
         agent.draw();
     }
 }
+
+
+//REFERENCES
+// The foundation of code is based on code showcased from the lecture Complexity
+// https://ju.slides.com/garrit/cc2024-complexity?token=Nl2_bLqJ#/9/5 where
+// Flowfields are introduced, and based on that foundation I have experimented
+// with values mostly
+//
+// Line 10-11 & 53-55 took some small help from Chat GPT to make it work
+// after some struggle with the noise values being the same for all 3 R, G & B
+// and be able to reach a specific "wanted" result.

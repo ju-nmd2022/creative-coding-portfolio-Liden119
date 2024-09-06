@@ -1,6 +1,7 @@
-class Boid {
+class Agent {
     constructor(x, y, maxSpeed, maxForce) {
       this.position = createVector(x, y);
+      this.lastPosition = createVector(x, y);
       this.acceleration = createVector(0, 0);
       this.velocity = createVector(0, 0);
       this.maxSpeed = maxSpeed;
@@ -20,6 +21,8 @@ class Boid {
     }
   
     update() {
+      this.lastPosition = this.position.copy();
+  
       this.velocity.add(this.acceleration);
       this.velocity.limit(this.maxSpeed);
       this.position.add(this.velocity);
@@ -29,26 +32,38 @@ class Boid {
     checkBorders() {
       if (this.position.x < 0) {
         this.position.x = innerWidth;
+        this.lastPosition.x = innerWidth;
       } else if (this.position.x > innerWidth) {
         this.position.x = 0;
+        this.lastPosition.x = 0;
       }
       if (this.position.y < 0) {
         this.position.y = innerHeight;
+        this.lastPosition.y = innerHeight;
       } else if (this.position.y > innerHeight) {
         this.position.y = 0;
+        this.lastPosition.y = 0;
       }
     }
   
     draw() {
       push();
-      translate(this.position.x, this.position.y);
-      ellipse(0, 0, 10);
+      stroke(100, 100, 100, 40);
+      strokeWeight(1);
+      line(
+        this.lastPosition.x,
+        this.lastPosition.y,
+        this.position.x,
+        this.position.y
+      );
       pop();
     }
   }
-  
+
+
   function setup() {
     createCanvas(innerWidth, innerHeight);
+    background(220, 200, 205);
     field = generateField();
     generateAgents();
   }
@@ -68,50 +83,24 @@ class Boid {
   
   function generateAgents() {
     for (let i = 0; i < 200; i++) {
-      let agent = new Boid(
-        Math.random() * innerWidth,
+      let agent = new Agent(
+        Math.random() * innerWidth, 
         Math.random() * innerHeight,
-        4,
-        0.1
+        1000,
+        10
       );
       agents.push(agent);
     }
   }
   
   const fieldSize = 50;
-  const fieldSizeHalf = fieldSize / 2;
   const maxCols = Math.ceil(innerWidth / fieldSize);
   const maxRows = Math.ceil(innerHeight / fieldSize);
-  const divider = 10;
+  const divider = 100;
   let field;
   let agents = [];
   
   function draw() {
-    background(255, 255, 255);
-    for (let x = 0; x < maxCols; x++) {
-      for (let y = 0; y < maxRows; y++) {
-        const padding = 10;
-        const value = field[x][y];
-        push();
-        translate(x * fieldSize + fieldSizeHalf, y * fieldSize + fieldSizeHalf);
-        rotate(value.heading());
-        strokeWeight(4);
-        stroke(200, 200, 200);
-        // Drawing an arrow
-        fill(200, 200, 200);
-        line(-fieldSizeHalf + padding, 0, fieldSizeHalf - padding, 0);
-        triangle(
-          fieldSizeHalf - padding,
-          0,
-          fieldSizeHalf - padding * 2,
-          padding,
-          fieldSizeHalf - padding * 2,
-          -padding
-        );
-        pop();
-      }
-    }
-  
     for (let agent of agents) {
       const x = Math.floor(agent.position.x / fieldSize);
       const y = Math.floor(agent.position.y / fieldSize);
@@ -122,3 +111,11 @@ class Boid {
       agent.draw();
     }
   }
+
+
+  //References
+  //
+  // The foundation of code is based on code showcased from the lecture Complexity
+  // https://ju.slides.com/garrit/cc2024-complexity?token=Nl2_bLqJ#/9/5 where
+  // Flowfields are introduced, and based on that foundation I have experimented
+  // with values mostly

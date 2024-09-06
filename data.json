@@ -18,5 +18,25 @@
     "file": "experiments/haskellV2.js",
     "name": "Haskell Ben Kovach V2",
     "description": "Using the same foundation and colors as the first verision. However, this artwork is based on circles instead of squares, and instead of different position of the corners the size is changing. The size changes also uses Noise which is new for V2. This one also has removed the noLoop() function making the random pattern being drawn continuesly and looks like there is drawn new patterns all the time."
+   },
+   {
+    "file": "experiments/flow-particle.js",
+    "name": "Flow Explosion",
+    "description": "This generative artwork is inspired by an artwork from google without a name. The idea is that it starts from one single points, and then spreads out in different angles to then continue together in a 'desired direction' based on a flowfield generated using perlin noise. Each 'line' is based on a class with specific attributes to behave the way as wanted, such as force, steer, & accerlation: these values are influenced by the flowfield and makes the 'lines' actually updating and moving continusly. In this version the lines opacity decrease a little for each step, and once the opacity hits a set point, some (based on random number) explodes and sends out a tons of particles to make it look like an explosion, using a variable checking when to explode and then generates a specific amount of particles in a particle array that generates values to send them in different angles to make it look like an explosion. "
+   },
+   {
+    "file": "experiments/flow-particle-V2.js",
+    "name": "Flow Explosion V2",
+    "description": "This is a second version of the first one, and is very similar. But in this case the particle explosion happens once reaching on of the 'walls' of the canvas and using checkborders to generated the explosion instead of being based on the opacity."
+   },
+   {
+    "file": "experiments/centered-ball.js",
+    "name": "Centered ball",
+    "description": "This art was created unexpectedly while experimenting and learning the use of flowfields. I used an example for FlowFields from the lecture, and when changing the values to make everything start at x-position 0 with a random y-height, and changing the desired direction towards the center the result got unexpectedly cool and I decided to keep working on it. With some small changes of other values, such as colorvalues it ended up like this :)"
+   },
+   {
+    "file": "experiments/sketchdrawing.js",
+    "name": "Sketch Draw",
+    "description":"This artwork is creating a pattern to look like a of lines drawn by a pencil close together. Using flowfield, forcing the Agents to follow a force going down, it will create several 'lines' from top to bottom. Once it reaches the bottom it restarts from the top using the a function checkboarders to move the y-pos and y-last pos to the top agian. It also has an increased speed and force to make the drawing look like its drawn faster."
    }
 ]
