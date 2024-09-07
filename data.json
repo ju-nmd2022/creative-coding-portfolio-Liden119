@@ -37,7 +37,7 @@
    {
     "file": "experiments/game-of-life.js",
     "name": "Game of Life Re-work",
-    "description":"An experimented version of game of life. Each cell is represented by the Cell class, which stores its state (alive or dead), age, and type (normal, aggressive, or passive). In addition to standard Game of Life rules, aggressive (red) cells can 'attack' passive (green) cells if they are surrounded by too many. With if statements to check the state of the neighbor cells on the board, making the different states behave a certain way if they interact."
+    "description":"An experimented version of game of life. Each cell is represented by the Cell class, which stores its state (alive or dead), age, and type (normal, aggressive, or passive). In addition to standard Game of Life rules, aggressive (red) cells can 'attack' passive (green) cells if they are surrounded by too many. With if statements to check the state of the neighbor cells on the board (2D grid), making the different states behave a certain way if they interact."
    },
    {
     "file": "experiments/sketchdrawing.js",
