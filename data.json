@@ -35,6 +35,11 @@
     "description": "This art was created unexpectedly while experimenting and learning the use of flowfields. I used an example for FlowFields from the lecture, and when changing the values to make everything start at x-position 0 with a random y-height, and changing the desired direction towards the center the result got unexpectedly cool and I decided to keep working on it. With some small changes of other values, such as colorvalues it ended up like this :)"
    },
    {
+    "file": "experiments/game-of-life.js",
+    "name": "Game of Life Re-work",
+    "description":"An experimented version of game of life. Each cell is represented by the Cell class, which stores its state (alive or dead), age, and type (normal, aggressive, or passive). In addition to standard Game of Life rules, aggressive (red) cells can 'attack' passive (green) cells if they are surrounded by too many. With if statements to check the state of the neighbor cells on the board, making the different states behave a certain way if they interact."
+   },
+   {
     "file": "experiments/sketchdrawing.js",
     "name": "Sketch Draw",
     "description":"This artwork is creating a pattern to look like a of lines drawn by a pencil close together. Using flowfield, forcing the Agents to follow a force going down, it will create several 'lines' from top to bottom. Once it reaches the bottom it restarts from the top using the a function checkboarders to move the y-pos and y-last pos to the top agian. It also has an increased speed and force to make the drawing look like its drawn faster."
