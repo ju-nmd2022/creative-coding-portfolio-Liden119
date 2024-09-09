@@ -9,7 +9,7 @@ class Cell {
     this.state = state;
     this.newState = -1;
     this.age = 0;
-    this.type = Math.round(Math.random() * 2); // 0: Normal, 1: Aggressiv, 2: Passiv
+    this.type = Math.round(Math.random() * 2); 
   }
 
   draw(size) {
@@ -17,11 +17,11 @@ class Cell {
       fill(235, 235, 255);
     } else {
       if (this.type == 0) {
-        fill(140, 160, 170); // Normal typ
+        fill(140, 160, 170); 
       } else if (this.type == 1) {
-        fill(200, 100, 100); // Aggressiv typ
+        fill(200, 100, 100); 
       } else if (this.type == 2) {
-        fill(100, 200, 100); // Passiv typ
+        fill(100, 200, 100); 
       }
     }
     rect(this.x * size, this.y * size, size, size);
@@ -80,29 +80,24 @@ function calculateNewState(x, y) {
   let currentState = board[x][y].state;
   let currentType = board[x][y].type;
 
-  // Krigsmekanik: Typ 1 (aggressiv) dödar typ 2 (passiv)
   if (currentState === 1 && currentType === 1 && type2Neighbors > 2) {
-    board[x][y].newState = 1; // Typ 1 överlever
+    board[x][y].newState = 1;
     for (let i = startX; i < endX; i++) {
       for (let j = startY; j < endY; j++) {
         if (board[i][j].state === 1 && board[i][j].type === 2) {
-          board[i][j].newState = 0; // Typ 2 dör om de är omgivna av typ 1
+          board[i][j].newState = 0; 
         }
       }
     }
   } else if (currentState === 1 && currentType === 2 && type1Neighbors > 3) {
-    // Typ 2 dör om det finns för många typ 1-celler
     board[x][y].newState = 0;
   } else if (currentState === 0 && type2Neighbors > 3 && type1Neighbors < 2) {
-    // Typ 2 föder fler passiva celler i områden utan för många typ 1-celler
     board[x][y].newState = 1;
     board[x][y].type = 2;
   } else if (currentState === 0 && type1Neighbors > 3) {
-    // Typ 1 sprider sig aggressivt
     board[x][y].newState = 1;
     board[x][y].type = 1;
   } else {
-    // Normala regler för överlevnad och död
     if (currentState === 0 && liveCells === 3) {
       board[x][y].newState = 1;
     } else if (currentState === 1 && (liveCells < 2 || liveCells > 3)) {
@@ -143,3 +138,17 @@ function draw() {
     count = 0;
   }
 }
+
+
+
+  //References
+  //
+  // The foundation of code is based on code showcased from the lecture Complexity
+  // https://ju.slides.com/garrit/cc2024-complexity?token=Nl2_bLqJ#/9/5 where
+  // the game of life are introduced, and based on that foundation I have experimented
+  // with values mostly.
+  //
+  // I have also tried to learn new ways or understand the foundation code from the lecture
+  // using both https://p5js.org/examples/math-and-physics-game-of-life/ and ChatGPT.
+  // However, after taking inspiration and knowledge from these I have constructed
+  // similar ways or changed them a little myself in the code.

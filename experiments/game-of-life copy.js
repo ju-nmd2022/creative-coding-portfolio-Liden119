@@ -9,7 +9,7 @@ class Cell {
     this.state = state;
     this.newState = -1;
     this.age = 0;
-    this.type = type; // 0: Normal, 1: Aggressive, 2: Passive
+    this.type = type;
   }
 
   draw(size) {
@@ -17,11 +17,11 @@ class Cell {
       fill(235, 235, 255);
     } else {
       if (this.type == 0) {
-        fill(140, 160, 170); // Normal type
+        fill(140, 160, 170);
       } else if (this.type == 1) {
-        fill(200, 100, 100); // Aggressive type
+        fill(200, 100, 100);
       } else if (this.type == 2) {
-        fill(100, 200, 100); // Passive type
+        fill(100, 200, 100);
       }
     }
     rect(this.x * size, this.y * size, size, size);
@@ -47,7 +47,7 @@ for (let i = 0; i < boardsize; i++) {
   board.push([]);
   for (let j = 0; j < boardsize; j++) {
     let state = Math.round(Math.random());
-    let type = Math.floor(Math.random() * 3); // Slumpmässig typ (0, 1, 2)
+    let type = Math.floor(Math.random() * 3);
     let cell = new Cell(i, j, state, type);
     board[i].push(cell);
   }
@@ -71,18 +71,17 @@ function calculateNewState(x, y) {
 
   let currentState = cell.state;
 
-  // Regler baserat på antal grannar och celltyp
   if (currentState === 0 && liveCells === 3) {
     cell.newState = 1;
   } else if (currentState === 1 && (liveCells < 2 || liveCells > 3)) {
     cell.newState = 0;
-  } else if (cell.age > 20) { // Om cellen lever längre än 20 cykler
-    cell.newState = 0; // Dör
+  } else if (cell.age > 20) { 
+    cell.newState = 0;
   } else {
-    if (cell.type === 1 && liveCells > 4) { // Aggressiv cell
-      cell.newState = 1; // Aggressiva celler överlever lättare
-    } else if (cell.type === 2 && liveCells < 2) { // Passiv cell
-      cell.newState = 0; // Passiva celler dör lättare i ensamhet
+    if (cell.type === 1 && liveCells > 4) { 
+      cell.newState = 1; 
+    } else if (cell.type === 2 && liveCells < 2) { 
+      cell.newState = 0; 
     } else {
       cell.newState = currentState;
     }
@@ -95,7 +94,6 @@ function calculateLiving() {
   console.log(living);
 }
 
-// Funktion för att skapa miljöförändringar över tid
 function environmentChanges() {
   if (frameCount % 100 === 0) {
     let x = Math.floor(Math.random() * boardsize);
@@ -105,7 +103,7 @@ function environmentChanges() {
     for (let i = Math.max(0, x - regionSize); i < Math.min(boardsize, x + regionSize); i++) {
       for (let j = Math.max(0, y - regionSize); j < Math.min(boardsize, y + regionSize); j++) {
         if (board[i][j].state === 0) {
-          board[i][j].newState = 1; // Skapar en "explosion" av liv
+          board[i][j].newState = 1;
         }
       }
     }
@@ -131,7 +129,7 @@ function draw() {
     calculateLiving();
   }
 
-  environmentChanges(); // Lägg till miljöförändringar
+  environmentChanges();
 
   count++;
   if (count == lifecycle) {
