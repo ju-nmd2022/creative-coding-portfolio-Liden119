@@ -55,7 +55,7 @@ function draw() {
 
                 //draw ellipse
                 const value = noise(x/divider, y/divider) * size;
-                ellipse(x, y, value);
+                rect(x, y, value, value);
 
                 //Draw X-ways ellipse "the turns" (Not the last one, x - 600)
                 if(y === 71 && x < 600){
@@ -73,7 +73,7 @@ function draw() {
 
                        //draw ellipse
                         const value = noise(x/divider, y/divider) * size;
-                        ellipse(x, y, value);
+                        rect(x, y, value, value);
                     }
                 }
             }
@@ -94,7 +94,7 @@ function draw() {
 
                //draw ellipse
                 const value = noise(x/divider, y/divider) * size;
-                ellipse(x, y, value);
+                rect(x, y, value, value);
 
                 //Draw X-ways ellipse "the turns"
                 if (y === 619){
@@ -112,7 +112,7 @@ function draw() {
 
                      //draw ellipse
                         const value = noise(x/divider, y/divider) * size;
-                        ellipse(x, y, value);
+                        rect(x, y, value, value);
                     }
                 }
             }
@@ -126,19 +126,7 @@ function draw() {
     rect(0, 0, 700, 700);
     pop();
     }else{
-    push();
-    fill(0, 0, 0);
-     const rectWidth = 700;
-     const rectHeight = 100;
-    let rectX = centerX - rectWidth / 2;
-    let rectY = centerY - rectHeight / 2;
-    rect(rectX, rectY, rectWidth, rectHeight);
-
-    fill(255, 255, 255);
-    textSize(40);
-    textAlign(CENTER, CENTER);
-    text("Move the mouse on the artwork", centerX, centerY);
-    pop();
+    //Removed sektion
 }
 }
 
