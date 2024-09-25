@@ -6,17 +6,15 @@ const divider = 10;
 let field;
 let agent;
 let filter, player;
-let oscillator; // Definiera en oscillator
-let oscillatorGain; // Definiera en gain node för oscillatorn
+let oscillator; 
+let oscillatorGain; 
 let soundEnabled = false;
-let started = false; // Flagga för att spåra om programmet har startats
+let started = false; 
 
 function preload() {
   player = new Tone.Player("music.mp3").toDestination(); 
-  player.autostart = false; // Ställ in på false så att musiken inte startar automatiskt
-  player.onended = () => {
-    player.start(); // Spela om när låten tar slut
-  };
+  player.autostart = false;
+  player.loop = true;
 }
 
 function setup() {
@@ -37,10 +35,10 @@ function setup() {
   function startAudio() {
     if (!toneStarted) {
       Tone.start().then(() => {
-        toneStarted = true; // Markera att vi har startat Tone
+        toneStarted = true; 
         soundEnabled = true;
         player.load("music.mp3").then(() => {
-          player.start(); // Starta musiken när vi trycker
+          player.start(); 
           loop(); 
         });
       }).catch(error => {
@@ -50,9 +48,9 @@ function setup() {
   }
 
   canvas.addEventListener('mousedown', () => {
-    if (!started) { // Kolla om programmet inte har startats
-      started = true; // Markera att programmet har startats
-      startAudio(); // Starta ljudet
+    if (!started) { 
+      started = true;
+      startAudio();
     } else {
       field = generateField();
       agent.position.set(Math.random() * innerWidth, Math.random() * innerHeight);
@@ -75,7 +73,7 @@ function setup() {
   oscillator = new Tone.Oscillator(options).connect(oscillatorGain);
   oscillator.start(); 
 
-  noLoop(); // Stoppa loopen i början
+  noLoop();
 }
 
 function generateField() {
@@ -149,7 +147,7 @@ function draw() {
     textSize(32);
     textAlign(CENTER, CENTER);
     text("Click the screen to start", width / 2, height / 2);
-    return;
+    return; 
   }
 
   drawField(); 
@@ -194,3 +192,14 @@ function controlOscillatorGain() {
   const gainValue = map(agent.position.y, height, 0, 0.1, 0); 
   oscillatorGain.gain.value = gainValue; 
 }
+
+
+/*
+REFERENCES
+
+
+    CODE NOT DONE YET!
+
+
+
+*/

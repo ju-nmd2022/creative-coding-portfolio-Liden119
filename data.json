@@ -47,11 +47,11 @@
    {
     "file": "experiments/tone-flow.js",
     "name": "Tone Field",
-    "description":""
+    "description":"This experiment makes a random note every time the ball enters a square. The balls movement is based on a flowfield"
    },
    {
     "file": "experiments/tone-2.js",
     "name": "MP3 vs Oscillator",
-    "description":""
+    "description":"This experiment plays an oscillator sound and a mp3 sound at the same time, however the volume of both is controlled by the height of the ball. If the ball is low the sound is low, but the oscillator high, and reversed the other way around. Also the frequency is based on the X-Value of the ball."
    }
 ]
