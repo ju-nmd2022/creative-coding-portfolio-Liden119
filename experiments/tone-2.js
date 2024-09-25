@@ -41,9 +41,7 @@ function setup() {
           player.start(); 
           loop(); 
         });
-      }).catch(error => {
-        console.error("Error starting Tone.js:", error);
-      });
+      })
     }
   }
 
@@ -197,9 +195,13 @@ function controlOscillatorGain() {
 /*
 REFERENCES
 
+    ChatGPT helped me fix errors with the mp3 music not starting over once ended, and made changes to line 35-45
 
-    CODE NOT DONE YET!
+    Inspiration taken som from the code within the automatone.js file in this repository:
+    https://github.com/pixelkind/automatone
+    Mostly for the Option & Oscillator created in line 58-68, but also a little for the frequency and volume.
 
-
+    The flowfield is created by using sources from my earlier work, which is created from sources of the lecture named Complexity in Canvas
+    https://ju.slides.com/garrit/cc2024-complexity?token=Nl2_bLqJ 
 
 */
